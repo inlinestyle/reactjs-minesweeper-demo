@@ -10,7 +10,9 @@ export default class Cell extends React.Component {
 
   flag (event) {
     event.preventDefault();
-    this.props.flag(this.props.cell);
+    if (!isComplete(this.props.status)) {
+      this.props.flag(this.props.cell);
+    }
   }
 
   cellText () {
