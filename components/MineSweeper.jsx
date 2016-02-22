@@ -51,9 +51,11 @@ export default class MineSweeper extends React.Component {
 
   makeLevelInput (level) {
     return (
-      <label><input type='radio' name='level'
-                    onChange={() => this.reset(level)}
-                    checked={this.state.level === level ? 'checked' : null}/>{Level.toString(level)}</label>
+      <label key={level}><input type='radio'
+                                name='level'
+                                onChange={() => this.reset(level)}
+                                checked={this.state.level === level ? 'checked' : null}
+                                />{Level.toString(level)}</label>
     );
   }
 
@@ -61,9 +63,7 @@ export default class MineSweeper extends React.Component {
     return (
       <div>
           <div>
-              {this.makeLevelInput(Level.EASY)}
-              {this.makeLevelInput(Level.MEDIUM)}
-              {this.makeLevelInput(Level.HARD)}
+              {[Level.EASY, Level.MEDIUM, Level.HARD].map(level => this.makeLevelInput(level))}
           </div>
           <div>
               <div onClick={() => this.reset(this.state.level)}>Reset</div>
