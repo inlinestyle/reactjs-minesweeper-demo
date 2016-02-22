@@ -49,11 +49,11 @@ export default class MineSweeper extends React.Component {
     this.reset();
   }
 
-  makeLevelInput (level, buttonText) {
+  makeLevelInput (level) {
     return (
       <label><input type='radio' name='level'
                     onChange={() => this.reset(level)}
-                    checked={this.state.level === level ? 'checked' : null}/>{buttonText}</label>
+                    checked={this.state.level === level ? 'checked' : null}/>{Level.toString(level)}</label>
     );
   }
 
@@ -61,15 +61,16 @@ export default class MineSweeper extends React.Component {
     return (
       <div>
           <div>
-              {this.makeLevelInput(Level.EASY, 'Easy')}
-              {this.makeLevelInput(Level.MEDIUM, 'Normal')}
-              {this.makeLevelInput(Level.HARD, 'Hard')}
+              {this.makeLevelInput(Level.EASY)}
+              {this.makeLevelInput(Level.MEDIUM)}
+              {this.makeLevelInput(Level.HARD)}
           </div>
           <div>
               <div onClick={() => this.reset(this.state.level)}>Reset</div>
               <div>Time: {this.state.time}</div>
               <div>Flagged: {this.state.flaggedCount}</div>
               <div>Cleared: {this.state.exposedCount}</div>
+              <div>Game Status: {GameStatus.toString(this.state.status)}</div>
               <Table status={this.state.status}
                      rowCount={this.state.rowCount}
                      colCount={this.state.colCount}
