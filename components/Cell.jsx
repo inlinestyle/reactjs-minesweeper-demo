@@ -1,8 +1,11 @@
 import React from 'react';
+import {GameStatus, isComplete} from '../lib/constants.js';
 
 export default class Cell extends React.Component {
   expose () {
-    this.props.expose(this.props.cell);
+    if (!isComplete(this.props.status)) {
+      this.props.expose(this.props.cell);
+    }
   }
 
   flag (event) {

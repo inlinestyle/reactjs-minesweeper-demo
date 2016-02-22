@@ -136,7 +136,7 @@ export default class Table extends React.Component {
              status={this.props.status}
              expose={this.expose.bind(this)}
              flag={this.flag.bind(this)}/>
-      )
+      );
     });
     return (
       <table>

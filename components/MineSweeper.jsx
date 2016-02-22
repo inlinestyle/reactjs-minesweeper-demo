@@ -1,17 +1,7 @@
 import React from 'react';
 import Table from './Table.jsx';
-import {GameStatus, Level} from '../lib/constants.js';
+import {GameStatus, Level, getLevelConfiguration} from '../lib/constants.js';
 
-const getLevelConfiguration = function (level) {
-  switch (level) {
-    case Level.EASY:
-      return {mineCount: 10,  rowCount: 9,  colCount: 9};
-    case Level.MEDIUM:
-      return {mineCount: 40,  rowCount: 16, colCount: 16};
-    case Level.HARD:
-      return {mineCount: 100, rowCount: 16, colCount: 30};
-  }
-};
 
 export default class MineSweeper extends React.Component {
   reset (level=Level.EASY) {
@@ -29,18 +19,6 @@ export default class MineSweeper extends React.Component {
       flaggedCount: 0,
       time: 0
     });
-  }
-
-  setEasy () {
-    this.reset(Level.EASY);
-  }
-
-  setMedium () {
-    this.reset(Level.MEDIUM);
-  }
-
-  setHard () {
-    this.reset(Level.HARD);
   }
 
   exposedMine () {
